@@ -1,4 +1,7 @@
 import React from "react";
+
+import { createStage } from '../gameHelpers.js';
+
 // Components
 import Stage from "./Stage.js";
 import Display from "./Display.js";
@@ -8,7 +11,7 @@ const Tetris = () => {
 
   return(
     <div>
-      <Stage />
+      <Stage stage={createStage}/>
       <aside>
         <div>
         <Display text="Score"/>
