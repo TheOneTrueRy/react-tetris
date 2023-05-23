@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { createStage } from "../gameHelpers.js";
+import { createStage, checkCollision } from "../gameHelpers.js";
 
 // Styled Components
 import { StyledTetrisWrapper, StyledTetris } from "./styles/StyledTetris.js";
@@ -22,7 +22,9 @@ const Tetris = () => {
   const [stage, setStage] = useStage(player);
 
   const movePlayer = dir => {
-    updatePlayerPos({x: dir, y: 0});
+    if(!checkCollision(player, stage, {x: dir, y: 0})){
+      updatePlayerPos({x: dir, y: 0});
+    }
   }
 
   const startGame = () => {
