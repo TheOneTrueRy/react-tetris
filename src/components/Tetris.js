@@ -1,6 +1,7 @@
 import React from "react";
 
 import { createStage } from '../gameHelpers.js';
+import { StyledTetrisWrapper, StyledTetris } from "./styles/StyledTetris.js";
 
 // Components
 import Stage from "./Stage.js";
@@ -10,17 +11,19 @@ import StartButton from "./StartButton.js";
 const Tetris = () => {
 
   return(
-    <div>
-      <Stage stage={createStage()}/>
-      <aside>
-        <div>
-        <Display text="Score"/>
-        <Display text="Rows"/>
-        <Display text="Level"/>
-        </div>
-        <StartButton />
-      </aside>
-    </div>
+    <StyledTetrisWrapper>
+      <StyledTetris>
+        <Stage stage={createStage()}/>
+        <aside>
+          <div>
+          <Display text="Score"/>
+          <Display text="Rows"/>
+          <Display text="Level"/>
+          </div>
+          <StartButton />
+        </aside>
+      </StyledTetris>
+    </StyledTetrisWrapper>
   )
 }
 
