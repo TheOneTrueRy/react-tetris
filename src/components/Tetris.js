@@ -23,6 +23,7 @@ const Tetris = () => {
   const [player, updatePlayerPos, resetPlayer, playerRotate] = usePlayer();
   const [stage, setStage, rowsCleared] = useStage(player, resetPlayer);
   const [score, setScore, rows, setRows, level, setLevel] = useGameStatus(rowsCleared);
+  const theme = document.getElementById("theme")
 
   const movePlayer = dir => {
     if(!checkCollision(player, stage, {x: dir, y: 0})){
@@ -38,6 +39,7 @@ const Tetris = () => {
     setScore(0)
     setRows(0)
     setLevel(0)
+    theme.play()
   }
 
   const drop = () => {
@@ -52,6 +54,8 @@ const Tetris = () => {
         console.log("Game Over!")
         setGameOver(true)
         setDropTime(null)
+        theme.pause()
+        theme.currentTime = 0;
       }
       updatePlayerPos({x: 0, y: 0, collided: true})
     }
@@ -105,6 +109,9 @@ const Tetris = () => {
           <StartButton callback={startGame}/>
         </aside>
       </StyledTetris>
+    <audio id="theme" loop>
+      <source src="/Theme-Song.wav" type="audio/wav"></source>
+    </audio>
     </StyledTetrisWrapper>
   )
 }
