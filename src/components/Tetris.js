@@ -110,7 +110,7 @@ const Tetris = () => {
         </aside>
       </StyledTetris>
     <audio id="theme" loop>
-      <source src="../Theme-Song.wav" type="audio/wav"></source>
+      <source src="react-tetris/Theme-Song.wav" type="audio/wav"></source>
     </audio>
     </StyledTetrisWrapper>
   )
