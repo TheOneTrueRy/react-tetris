@@ -11,9 +11,10 @@ import Display from "./Display.js";
 import StartButton from "./StartButton.js";
 
 // Custom Hooks
-import {usePlayer} from '../hooks/usePlayer.js';
-import {useStage} from '../hooks/useStage.js'
-import {useInterval} from '../hooks/useInterval.js'
+import { usePlayer } from '../hooks/usePlayer.js';
+import { useStage } from '../hooks/useStage.js'
+import { useInterval } from '../hooks/useInterval.js'
+import { useGameStatus } from "../hooks/useGameStatus.js";
 
 const Tetris = () => {
   const [dropTime, setDropTime] = useState(null);
@@ -21,6 +22,7 @@ const Tetris = () => {
 
   const [player, updatePlayerPos, resetPlayer, playerRotate] = usePlayer();
   const [stage, setStage] = useStage(player, resetPlayer);
+  const [score, setScore, rows, setRows, level, setLevel] = useGameStatus();
 
   const movePlayer = dir => {
     if(!checkCollision(player, stage, {x: dir, y: 0})){
